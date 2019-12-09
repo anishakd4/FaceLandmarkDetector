@@ -45,7 +45,7 @@ int main(){
 
     //Load dlib the face landmark detector
     shape_predictor faceLandmarkDetector ;
-    deserialize("../../dlibAndModel/shape_predictor_68_face_landmarks.dat") >> faceLandmarkDetector;
+    deserialize("../dlibAndModel/shape_predictor_68_face_landmarks.dat") >> faceLandmarkDetector;
 
     // Read image using opencv
     Mat inputImage = imread("../assets/putin.jpg");

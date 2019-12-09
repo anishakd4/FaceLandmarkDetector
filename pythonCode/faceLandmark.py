@@ -30,7 +30,7 @@ def writeFacelandmarksToDisk(textFileName, faceLandmark):
 faceDetector = dlib.get_frontal_face_detector()
 
 #Load the dlib face landmark detector
-faceLandmarkDetector = dlib.shape_predictor("../../dlibAndModel/shape_predictor_68_face_landmarks.dat")
+faceLandmarkDetector = dlib.shape_predictor("../dlibAndModel/shape_predictor_68_face_landmarks.dat")
 
 # Read image using opencv
 inputImage = cv2.imread("../assets/putin.jpg")

@@ -28,7 +28,7 @@ find_package( OpenCV REQUIRED )
 
 include_directories( ${OpenCV_INCLUDE_DIRS})
 
-include(../../dlibAndModel/dlib/dlib/cmake)
+include(../dlibAndModel/dlib/dlib/cmake)
 
 MACRO(add_anish_executable name)
   ADD_EXECUTABLE(${name} ${name}.cpp)
