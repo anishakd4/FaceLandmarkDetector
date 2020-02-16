@@ -3,12 +3,13 @@
 #include<dlib/image_processing/frontal_face_detector.h>
 #include<opencv2/opencv.hpp>
 #include<iostream>
+#include<string>
 
 using namespace dlib;
 using namespace std;
 using namespace cv;
 
-
+//draw landmarks over face
 void drawFaceLandmarks(Mat &image, full_object_detection faceLandmark){
 
     //Loop over all face landmarks
@@ -21,10 +22,11 @@ void drawFaceLandmarks(Mat &image, full_object_detection faceLandmark){
         circle(image, Point(x, y), 1, Scalar(0, 0, 255), 2, LINE_AA );
 
         //Draw text at face landmark to show index of current face landmark over the image using opencv
-        putText(image, text, Point(x, y),FONT_HERSHEY_SIMPLEX, 0.3, Scalar(255, 0, 0), 1);
+        putText(image, text, Point(x, y), FONT_HERSHEY_SIMPLEX, 0.3, Scalar(255, 0, 0), 1);
     }
 }
 
+// Write landmarks to a file
 void writeFaceLandmarkstoFile(string facelandmarkFileName, full_object_detection faceLandmark){
     //Open file
     std::ofstream outputFile;
@@ -40,10 +42,11 @@ void writeFaceLandmarkstoFile(string facelandmarkFileName, full_object_detection
 }
 
 int main(){
-    //Loaad the dlib face detector
+
+    //Load the dlib face detector
     frontal_face_detector faceDetector = get_frontal_face_detector();
 
-    //Load dlib the face landmark detector
+    //Load the dlib face landmark detector
     shape_predictor faceLandmarkDetector ;
     deserialize("../dlibAndModel/shape_predictor_68_face_landmarks.dat") >> faceLandmarkDetector;
 
@@ -84,10 +87,7 @@ int main(){
         drawFaceLandmarks(image, facelandmark);
 
         //Write face Landmarks to a file on disk to analyze
-        string s1= "face_landmarks_";
-        string s2 = to_string(i+1);
-        string s3 = ".txt";
-        string landmarksFilename = s1 + s2 + s3;
+        string landmarksFilename = "face_landmarks_" + to_string(i+1) + ".txt";
         writeFaceLandmarkstoFile(landmarksFilename, facelandmark);
     }
 

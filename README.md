@@ -23,7 +23,7 @@ cmake --build . --config Release
 ### come out of the build directory
 cd ..
 
-### Execute programs
+### Run C++ program
 ./build/faceLandmark
 
 
